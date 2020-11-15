@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.head{
+  background-color: #282c34;
+  color: white;
+  height: 50px;
+  padding-top: 20px;
+
+}
+a {
+  color: white !important;
+  font-weight: 700;
+  padding-top: 20px;
+  margin-left: 10px;
+  font-size: larger;
+  text-decoration: none;
+}
+a:visited {
+  color: white !important;
+  font-weight: 700;
+  padding-top: 20px;
+  margin-left: 10px;
+  font-size: larger;
+  text-decoration: none;
+}

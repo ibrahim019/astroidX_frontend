@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.listStores{
+  background-color: rgb(179, 167, 167);
+  color:black;
+  font-size: 10px;
+  margin: 12px;
+padding: 5px;
+font-weight: 600;
+border-radius: 10px;
+}
+.listStoresP{
+  display: flex;
+}
