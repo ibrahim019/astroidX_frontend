@@ -34,7 +34,7 @@ function AddStore() {
       };
       const deleteStore = (str) => {
         axios.post(config.url+"/delete",{
-            "url":name
+            "url":str
         })
             .then(res => {
                 setStore(store.filter((e)=>(e !== str)));
