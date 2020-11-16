@@ -3,7 +3,6 @@ import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
 import {
-    BrowserRouter as Router,
 
     Link
 } from "react-router-dom";
@@ -18,7 +17,7 @@ function AddStore() {
                 let result = res.data.map(({ name }) => name)
                 //console.log(result)
                 setStore(result)
-                console.log(store)
+           
             })
     }, []);
     const addStore = () => {
@@ -29,7 +28,7 @@ function AddStore() {
            
                 setStore([...store, res.data.url])
                 setName("https://www.")
-                console.log(store)
+              
             })
       };
       const deleteStore = (str) => {
@@ -47,8 +46,7 @@ function AddStore() {
 
 
 
-                <Link 
-                >Dashboard</Link>
+          
 
 
             </div>
@@ -57,9 +55,9 @@ function AddStore() {
            
                 <img src={logo} className="App-logo" alt="logo" />
                 <div className="listStoresP">
-                {store.map((str)=>{
+                {store.map((str,index)=>{
                     return(
-                        <div className="listStores" 
+                        <div className="listStores" key={index}
                         >
                         <Link to={{
                           pathname: '/dashboard',

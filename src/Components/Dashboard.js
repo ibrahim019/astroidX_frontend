@@ -4,14 +4,12 @@ import {
     useLocation
 } from "react-router-dom";
 import axios from 'axios';
-import { useTable } from 'react-table'
 import TableStore from './TableStore';
 import config from '../config';
 import '../App.css';
 function Dashboard(props) {
     // Declare a new state variable, which we'll call "count"
     const location = useLocation();
-    const [name, setName] = useState("");
     const [loading, setLoading] = useState(0);
     const [storeData, setStoreData] = useState([{
         "avg": 3327.3,
@@ -21,7 +19,7 @@ function Dashboard(props) {
        const [storeData2, setStoreData2] = useState([]);
     useEffect(() => {
         (async () => {
-            const result = await axios.post(config.url+`/dashboard`, {
+             await axios.post(config.url+`/dashboard`, {
                 "url": location.state.str
             })
                 .then(res => {
@@ -37,10 +35,9 @@ function Dashboard(props) {
     }, []);
 
     useEffect(() => {
-        console.log(storeData2.length)
+      
         if(storeData2.length>0){
             setLoading(1);
-            console.log(storeData2)
         }
      
       }, [storeData2]);
@@ -61,7 +58,7 @@ function Dashboard(props) {
                   <div>
                    {storeData2.map((str,index)=>{
                      return(
-                         <span className="listStores" onClick={()=>changeTime(index)}>
+                         <span key={index} className="listStores" onClick={()=>changeTime(index)}>
                      {new Date(str.time).toString()}
                          </span>
                      )
