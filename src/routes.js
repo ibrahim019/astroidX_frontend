@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    useParams,
-    Link
+    Route
 } from "react-router-dom";
 import './index.css';
 import AddStore from './Components/AddStore';
