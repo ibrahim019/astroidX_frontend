@@ -32,8 +32,14 @@ function AddStore() {
                 console.log(store)
             })
       };
-      const gotoStore = (str) => {
+      const deleteStore = (str) => {
+        axios.post(config.url+"/delete",{
+            "url":name
+        })
+            .then(res => {
+                setStore(store.filter((e)=>(e !== str)));
          
+            })
       };
     return (
         <div>
@@ -53,14 +59,14 @@ function AddStore() {
                 <div className="listStoresP">
                 {store.map((str)=>{
                     return(
-                        <div className="listStores" onClick={()=>gotoStore(str)}
+                        <div className="listStores" 
                         >
                         <Link to={{
                           pathname: '/dashboard',
                             state: {
                            str: str
                                     }
-                            }}>{str}</Link>
+                            }}>{str}</Link> <span className="close" onClick={()=>deleteStore(str)}>x</span>
                     </div>
                     )
                   

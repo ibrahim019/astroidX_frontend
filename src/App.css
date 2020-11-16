@@ -49,3 +49,9 @@ border-radius: 10px;
 .listStoresP{
   display: flex;
 }
+
+.close{
+  color: white;
+  padding: 5px;
+ 
+}

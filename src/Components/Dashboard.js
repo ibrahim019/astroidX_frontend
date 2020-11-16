@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useTable } from 'react-table'
 import TableStore from './TableStore';
 import config from '../config';
+import '../App.css';
 function Dashboard(props) {
     // Declare a new state variable, which we'll call "count"
     const location = useLocation();
@@ -17,6 +18,7 @@ function Dashboard(props) {
         "nProducts": 24,
         "name": "Camp Cloon"
        }]);
+       const [storeData2, setStoreData2] = useState([]);
     useEffect(() => {
         (async () => {
             const result = await axios.post(config.url+`/dashboard`, {
@@ -24,7 +26,7 @@ function Dashboard(props) {
             })
                 .then(res => {
                     setStoreData(res.data[0].vendorTime[0].VendorA)
-                    setLoading(1)
+                    setStoreData2(res.data[0].vendorTime)
                  
                 })
         
@@ -34,18 +36,17 @@ function Dashboard(props) {
 
     }, []);
 
-    const data = React.useMemo(
-        () => [
-          {
-            "avg": 37.3,
-        "nProducts": 24,
-        "name": "Camp Cloon"
-          }
-         
-        ],
-        []
-      )
- 
+    useEffect(() => {
+        console.log(storeData2.length)
+        if(storeData2.length>0){
+            setLoading(1);
+            console.log(storeData2)
+        }
+     
+      }, [storeData2]);
+      const changeTime = (index) => {
+        setStoreData(storeData2[index].VendorA)
+      };
     return (
         <div>
             <div className="head" //onClick={() => console.log(storeData)}
@@ -55,6 +56,22 @@ function Dashboard(props) {
 
                 <Link to="/">Home</Link>
                 <br/>  <br/>  <br/>  <br/>  <br/>
+                <div className="listStoresP">
+                {loading?
+                  <div>
+                   {storeData2.map((str,index)=>{
+                     return(
+                         <span className="listStores" onClick={()=>changeTime(index)}>
+                     {new Date(str.time).toString()}
+                         </span>
+                     )
+                    
+                  })} 
+                  </div>
+                
+                :null}
+                </div>
+                <br/>  <br/>
                 {loading? <TableStore data={storeData}/>:null}
              
             

@@ -1,4 +1,4 @@
 module.exports = {
-	'url': 'http://localhost:8080/stores',
+	'url': 'https://asteroidxbackend.herokuapp.com/stores',
 	
 };
